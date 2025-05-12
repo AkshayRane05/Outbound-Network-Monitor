@@ -2,7 +2,7 @@
 
 A lightweight, high-performance Python utility for monitoring outbound network connections from your system in real-time. This tool helps identify potentially suspicious connections by flagging domains based on customizable patterns.
 
-![Connection Monitor Screenshot](https://raw.githubusercontent.com/AkshayRane05/outbound-connection-monitor/main/screenshot.png)
+![Connection Monitor Screenshot](https://raw.githubusercontent.com/username/outbound-connection-monitor/main/screenshot.png)
 
 ## Features
 
@@ -17,8 +17,11 @@ A lightweight, high-performance Python utility for monitoring outbound network c
 
 - Python 3.6+
 - psutil library
+- Administrator/root privileges (to access process information)
 
 ## Installation
+
+### Option 1: System-wide installation (not recommended for Kali Linux)
 
 1. Clone this repository:
 
@@ -28,21 +31,96 @@ A lightweight, high-performance Python utility for monitoring outbound network c
    ```
 
 2. Install dependencies:
+
+   ```bash
+   # For most systems
+   pip install psutil
+
+   # For Debian/Ubuntu
+   sudo apt install python3-psutil
+   ```
+
+### Option 2: Using a virtual environment (recommended, especially for Kali Linux)
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/username/outbound-connection-monitor.git
+   cd outbound-connection-monitor
+   ```
+
+2. Make sure you have the virtual environment package:
+
+   ```bash
+   # For Kali Linux
+   sudo apt install python3-venv
+   ```
+
+3. Create and activate a virtual environment:
+
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+4. Install dependencies in the virtual environment:
    ```bash
    pip install psutil
+   ```
+
+### Special notes for Kali Linux
+
+Kali Linux implements PEP 668, which prevents direct pip installations to the system Python. You have three options:
+
+1. Install from apt (if available):
+
+   ```bash
+   sudo apt install python3-psutil
+   ```
+
+2. Use a virtual environment as shown above (recommended)
+
+3. Use pipx for isolated application installation:
+   ```bash
+   # Install pipx if not already installed
+   sudo apt install pipx
+   # Install the application in an isolated environment
+   pipx install psutil
    ```
 
 ## Usage
 
 Run the script with administrator/root privileges (required to see all system processes):
 
-```bash
-# On Windows
-python connection_monitor.py
+### Windows
 
-# On Linux/macOS
+```bash
+# Run Command Prompt as Administrator, then:
+python connection_monitor.py
+```
+
+### Linux/macOS
+
+```bash
 sudo python3 connection_monitor.py
 ```
+
+### Kali Linux with virtual environment
+
+```bash
+# If using a virtual environment, activate it first:
+source venv/bin/activate
+
+# Then run with sudo (sudo will use system Python by default, so we specify the path):
+sudo venv/bin/python connection_monitor.py
+```
+
+### Platform-Specific Notes
+
+- **Windows**: Some process information may be limited unless running as Administrator
+- **Linux**: Use `sudo` to ensure access to all process information
+- **Kali Linux**: Follow the virtual environment instructions above to avoid PEP 668 errors
+- **macOS**: Use `sudo` and be aware that additional permissions may be required due to security features
 
 - Press `Enter` to refresh the connections list
 - Press `Ctrl+C` to exit the program
@@ -91,6 +169,8 @@ The monitor is designed to be efficient by:
 - Using parallel DNS resolution with ThreadPoolExecutor
 - Only resolving new connections since the last scan
 - Tracking and displaying execution time for performance monitoring
+
+Performance may vary across operating systems due to differences in how network information is exposed by the OS. Windows typically processes network information differently than Unix-based systems.
 
 ## Use Cases
 

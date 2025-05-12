@@ -1,5 +1,7 @@
 import psutil
 import socket
+import platform
+import os
 from datetime import datetime
 import re
 import time
@@ -81,7 +83,7 @@ def analyze_connections():
 
     print(
         f"\n[+] Analyzing Connections @ {datetime.now().strftime('%H:%M:%S')}")
-    print("{:<6} {:<25} {:<18} {:<6} {:<50} {}".format(
+    print("{:<6} {:<20} {:<18} {:<6} {:<48} {}".format(
         "PID", "Process", "Remote IP", "Port", "Domain", "⚠️  Suspicious?"
     ) + "\n")
 
@@ -123,12 +125,32 @@ def analyze_connections():
         domain = dns_cache.get(remote_ip, "Unknown")
         flagged = "       ✅" if looks_suspicious(domain) else ""
 
-        print("{:<6} {:<25} {:<18} {:<6} {:<50} {}".format(
+        print("{:<6} {:<20} {:<18} {:<6} {:<48} {}".format(
             pid, proc_name, remote_ip, port, domain, flagged
         ))
 
 
 if __name__ == "__main__":
+    # Check if we're running with appropriate privileges
+    is_admin = True
+    if platform.system() == "Windows":
+        try:
+            import ctypes
+            is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
+        except:
+            is_admin = False
+    else:  # Unix-based systems
+        is_admin = os.geteuid() == 0 if hasattr(os, 'geteuid') else False
+
+    if not is_admin:
+        print(
+            "\n[!] Warning: This script may not show all connections without administrator/root privileges.")
+        print(
+            "[!] Consider rerunning as administrator (Windows) or with sudo (Linux/macOS).\n")
+
+    print(
+        f"[+] Connection Monitor running on {platform.system()} {platform.release()}")
+
     try:
         while True:
             start_time = time.time()
