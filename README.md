@@ -2,7 +2,7 @@
 
 A lightweight, high-performance Python utility for monitoring outbound network connections from your system in real-time. This tool helps identify potentially suspicious connections by flagging domains based on customizable patterns.
 
-![Connection Monitor Screenshot](https://raw.githubusercontent.com/username/outbound-connection-monitor/main/screenshot.png)
+![Connection Monitor Screenshot](https://raw.githubusercontent.com/AkshayRane05/outbound-connection-monitor/main/screenshot.png)
 
 ## Features
 
