@@ -2,7 +2,7 @@
 
 A lightweight, high-performance Python utility for monitoring outbound network connections from your system in real-time. This tool helps identify potentially suspicious connections by flagging domains based on customizable patterns.
 
-![Connection Monitor Screenshot](https://raw.githubusercontent.com/username/outbound-connection-monitor/main/screenshot.png)
+![Connection Monitor Screenshot](https://raw.githubusercontent.com/AkshayRane05/Outbound-Network-Monitor/main/screenshot.png)
 
 ## Features
 
@@ -26,8 +26,8 @@ A lightweight, high-performance Python utility for monitoring outbound network c
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/username/outbound-connection-monitor.git
-   cd outbound-connection-monitor
+   git clone https://github.com/AkshayRane05/Outbound-Network-Monitor.git
+   cd Outbound-Network-Monitor
    ```
 
 2. Install dependencies:
@@ -45,8 +45,8 @@ A lightweight, high-performance Python utility for monitoring outbound network c
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/username/outbound-connection-monitor.git
-   cd outbound-connection-monitor
+   git clone https://github.com/AkshayRane05/Outbound-Network-Monitor.git
+   cd Outbound-Network-Monitor
    ```
 
 2. Make sure you have the virtual environment package:
@@ -96,13 +96,13 @@ Run the script with administrator/root privileges (required to see all system pr
 
 ```bash
 # Run Command Prompt as Administrator, then:
-python connection_monitor.py
+python network_monitor.py
 ```
 
 ### Linux/macOS
 
 ```bash
-sudo python3 connection_monitor.py
+sudo python3 network_monitor.py
 ```
 
 ### Kali Linux with virtual environment
@@ -112,7 +112,7 @@ sudo python3 connection_monitor.py
 source venv/bin/activate
 
 # Then run with sudo (sudo will use system Python by default, so we specify the path):
-sudo venv/bin/python connection_monitor.py
+sudo venv/bin/python network_monitor.py
 ```
 
 ### Platform-Specific Notes
@@ -127,15 +127,14 @@ sudo venv/bin/python connection_monitor.py
 
 ## Output Explanation
 
-The monitor displays the following information for each connection:
-
-| Column     | Description                                       |
+The monitor displays the following information Oor each Network:M
+| Column | Description |
 | ---------- | ------------------------------------------------- |
-| PID        | Process ID                                        |
-| Process    | Name of the process making the connection         |
-| Remote IP  | IP address of the remote endpoint                 |
-| Port       | Port number on the remote endpoint                |
-| Domain     | Resolved domain name (if available)               |
+| PID | Process ID |
+| Process | Name of the Orocess making the Network M |
+| Remote IP | IP address of the remote endpoint |
+| Port | Port number on the remote endpoint |
+| Domain | Resolved domain name (if available) |
 | Suspicious | ✅ marker indicates potentially suspicious domain |
 
 ## Customization
@@ -182,7 +181,7 @@ Performance may vary across operating systems due to differences in how network 
 
 ## License
 
-MIT License - See LICENSE file for details.
+MIT License - See [LICENSE] file for details.
 
 ## Contributing
 
